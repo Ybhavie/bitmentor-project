@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Mock Tests - BitMentor{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+        <h1>Mock Tests & Assessments</h1>
+        <p class="lead">Test your knowledge with our weekly adaptive mock tests and track your improvement.</p>
+
+        <div class="section">
+            <h2>Available Tests</h2>
+            <div class="test-card-grid">
+                <div class="card feature">
+                    <h3>Python Basics - Weekly Test</h3>
+                    <p class="badge">2 Questions • 5 Minutes</p>
+                    <p class="small" style="margin-bottom: 16px;">Covers variables, data types, and core functions.</p>
+                    <a href="{{ url_for('start_test', course_id=1) }}" class="btn" style="width: 100%;">Start Test</a>
+                </div>
+                <div class="card feature" style="opacity: 0.6;">
+                    <h3>Java Fundamentals - Test 1</h3>
+                    <p class="badge">LOCKED</p>
+                    <p class="small" style="margin-bottom: 16px;">Complete the Java Fundamentals module to unlock.</p>
+                    <a href="#" class="btn ghost" style="width: 100%; cursor: not-allowed;">Locked</a>
+                </div>
+            </div>
+        </div>
+        </div>
+</main>
+{% endblock %}

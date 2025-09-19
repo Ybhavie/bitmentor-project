@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile - BitMentor{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+        <h1>My Profile</h1>
+        
+        <div class="profile-header">
+            <div class="profile-avatar">{{ user.name[0] }}</div>
+            <div>
+                <h2 style="margin: 0;">{{ user.name }}</h2>
+                <p class="lead" style="margin: 4px 0 0;">{{ user.bio or "Add a bio in your settings below." }}</p>
+            </div>
+        </div>
+
+        <div class="section">
+             <h2>My Stats</h2>
+             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="card feature" style="text-align: center;"><h3>{{ stats.enrolled_courses }}</h3><p class="muted">Courses Enrolled</p></div>
+                <div class="card feature" style="text-align: center;"><h3>{{ stats.forum_threads }}</h3><p class="muted">Discussions Started</p></div>
+                <div class="card feature" style="text-align: center;"><h3>{{ stats.forum_posts }}</h3><p class="muted">Replies Posted</p></div>
+             </div>
+        </div>
+
+        <div class="section">
+            <h2>Account Settings</h2>
+            <form class="card" action="{{ url_for('update_profile') }}" method="post">
+                <div class="form-grid" style="grid-template-columns: 1fr;">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" value="{{ user.name }}" class="input">
+                    </div>
+                     <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" value="{{ user.email }}" class="input" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Your Bio</label>
+                        <textarea id="bio" name="bio" class="input" style="min-height: 100px;">{{ user.bio or '' }}</textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn" style="margin-top: 20px;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

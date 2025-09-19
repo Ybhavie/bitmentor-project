@@ -1,0 +1,619 @@
+/* ==========================================================================
+   1. Global Variables & Basic Setup
+   ========================================================================== */
+:root {
+  --bg: #0b1220;
+  --panel: #0e1630;
+  --text: #e8ecf3;
+  --muted: #a7b0c3;
+  --brand1: #6a11cb;
+  --brand2: #2575fc;
+  --accent: linear-gradient(135deg, var(--brand1), var(--brand2));
+  --card: #121b3a;
+  --ring: rgba(101, 132, 255, .35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 10% -10%, #1a2456 0%, transparent 60%), var(--bg);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ==========================================================================
+   2. Typography
+   ========================================================================== */
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  margin: 12px 0 4px;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+  margin: 0 0 8px;
+}
+
+h3 {
+  margin: 0 0 6px;
+}
+
+.lead {
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  margin-bottom: 20px;
+}
+
+.section-lead {
+  color: var(--muted);
+  margin: 0 0 18px;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   3. Layout & Sections
+   ========================================================================== */
+.section {
+  padding: 36px 0;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   4. Header & Navigation
+   ========================================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+  background: rgba(11, 18, 32, .6);
+  border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+}
+
+.brand img {
+  width: 28px;
+  height: 28px;
+}
+
+.brand span {
+  letter-spacing: .3px;
+}
+
+.nav ul {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.nav a:hover {
+  background: rgba(255, 255, 255, .06);
+}
+
+.burger {
+  display: none; /* For mobile */
+}
+
+/* ==========================================================================
+   5. Components (Buttons, Cards, Forms)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 6px 30px -10px var(--ring);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: none;
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.feature {
+  background: var(--card);
+}
+
+.stack .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+
+.tag {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.badge {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.input {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .12);
+  color: var(--text);
+  padding: 12px 14px;
+  border-radius: 12px;
+  min-width: 240px;
+}
+
+/* ==========================================================================
+   6. Responsive Design
+   ========================================================================== */
+@media (max-width: 880px) {
+  .nav ul {
+    display: none;
+  }
+  .burger {
+    display: block;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .15);
+    padding: 8px 10px;
+    border-radius: 10px;
+    color: var(--text);
+  }
+}
+
+/* ==========================================================================
+   7. Authentication Pages (Login/Sign Up)
+   ========================================================================== */
+.body-auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.auth-box {
+    background-color: var(--panel);
+    border: 1px solid rgba(255, 255, 255, .08);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.auth-box h1 {
+    margin-bottom: 10px;
+}
+
+.auth-box p {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .06);
+    color: var(--text);
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--brand2);
+    box-shadow: 0 0 0 3px var(--ring);
+}
+
+.auth-button {
+    margin-top: 10px;
+}
+
+.switch-auth {
+    margin-top: 20px;
+}
+
+.switch-auth p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.switch-auth a {
+    color: var(--brand2);
+    font-weight: 600;
+}
+
+.switch-auth a:hover {
+    text-decoration: underline;
+}
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   8. Lesson Page Layout
+   ========================================================================== */
+.lesson-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Sidebar width and main content */
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.lesson-sidebar {
+    position: sticky;
+    top: 100px; /* Adjust based on header height */
+}
+
+.lesson-sidebar h3 {
+    margin-bottom: 12px;
+}
+
+.lesson-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lesson-sidebar li a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: var(--muted);
+    transition: background-color 0.2s ease;
+}
+
+.lesson-sidebar li a:hover {
+    background-color: var(--card);
+    color: var(--text);
+}
+
+.lesson-sidebar li a.active {
+    background: var(--accent);
+    color: white;
+    font-weight: 600;
+}
+
+.lesson-content pre {
+    background-color: var(--card);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 8px;
+    padding: 16px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.lesson-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    padding-top: 20px;
+}
+
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   9. AI Scheduler Page
+   ========================================================================== */
+.scheduler-setup {
+    background-color: var(--card);
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.form-group select, .form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(11,18,32,.6);
+    color: var(--text);
+    font-size: 16px;
+}
+
+.schedule-display .day-plan {
+    background-color: var(--card);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.schedule-display .day-plan h3 {
+    margin: 0 0 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    padding-bottom: 8px;
+}
+
+.schedule-display .day-plan p {
+    margin: 0;
+    color: var(--muted);
+}
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   10. Community Forum
+   ========================================================================== */
+.thread-card {
+    background-color: var(--card);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.thread-card:hover {
+    background-color: var(--panel);
+}
+
+.thread-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+}
+
+.thread-meta {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.thread-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   11. AI Mentor Chatbot Button
+   ========================================================================== */
+#ai-mentor-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 8px 20px var(--ring);
+    z-index: 1000;
+    transition: transform 0.2s ease;
+}
+
+#ai-mentor-button:hover {
+    transform: scale(1.1);
+}
+
+#ai-mentor-button svg {
+    width: 32px;
+    height: 32px;
+}
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   12. Single Thread Page
+   ========================================================================== */
+.post-card {
+    background-color: var(--card);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, .08);
+}
+
+.post-card.original-post {
+    border-left: 4px solid var(--brand2);
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+.post-body p {
+    margin: 0 0 15px;
+    line-height: 1.7;
+}
+
+.reply-form textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(11,18,32,.6);
+    color: var(--text);
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+}
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   13. Mock Tests Page
+   ========================================================================== */
+.test-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.report-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card);
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.report-card .score {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: var(--accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   14. Profile Page
+   ========================================================================== */
+.profile-header {
+    background-color: var(--card);
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+/* ADD THIS TO THE END OF YOUR style.css FILE */
+
+/* ==========================================================================
+   15. Mobile Navigation
+   ========================================================================== */
+.nav .mobile-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 60px; /* Position below the header */
+    left: 0;
+    right: 0;
+    background: var(--panel);
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.nav .mobile-menu.active {
+    display: block; /* Show the menu */
+}
+
+.nav .mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BitMentor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+</html>
+
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <a href="{{ url_for('dashboard') }}" class="brand">
+                <img src="{{ url_for('static', filename='favicon.png') }}" alt="BitMentor Logo">
+                <span>BitMentor</span>
+            </a>
+            
+            <ul class="desktop-menu">
+                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('courses_page') }}">Courses</a></li>
+                <li><a href="{{ url_for('scheduler_page') }}">Scheduler</a></li>
+                <li><a href="{{ url_for('forum_page') }}">Forum</a></li>
+                <li><a href="{{ url_for('mock_tests_page') }}">Tests</a></li>
+                <li><a href="{{ url_for('profile_page') }}">Profile</a></li>
+            </ul>
+
+            <button class="burger" id="burger-btn">☰</button>
+
+            <div class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('courses_page') }}">Courses</a></li>
+                    <li><a href="{{ url_for('scheduler_page') }}">Scheduler</a></li>
+                    <li><a href="{{ url_for('forum_page') }}">Forum</a></li>
+                    <li><a href="{{ url_for('mock_tests_page') }}">Tests</a></li>
+                    <li><a href="{{ url_for('profile_page') }}">Profile</a></li>
+                </ul>
+            </div>
+            
+            <a href="{{ url_for('logout') }}" class="btn ghost">Logout</a>
+        </nav>
+    </div>
+</header>
+    <main class="section">
+        <div class="container">
+            
+            <div class="grid" style="grid-template-columns: 2fr 1fr; align-items: center; gap: 40px;">
+                <div>
+                    <span class="tag">Programming Language</span>
+                    <h1>Python for Beginners</h1>
+                    [cite_start]<p class="lead">Master Python from the ground up with our structured, engaging, and personalized curriculum designed to take you from novice to pro. [cite: 10]</p>
+                    <a href="#" class="btn" style="padding: 14px 24px;">Enroll in Course Now</a>
+                </div>
+                <div class="card feature">
+                    <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px;">
+                        <li><strong>Level:</strong> Beginner</li>
+                        <li><strong>Lessons:</strong> 45</li>
+                        <li><strong>Projects:</strong> 5</li>
+                        <li><strong>Certification:</strong> Included</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Course Curriculum</h2>
+                [cite_start]<p class="section-lead">A detailed breakdown of our step-by-step programming curriculum for Python. [cite: 17]</p>
+                
+                <div class="grid" style="gap: 12px;">
+                    <div class="card">
+                        <h3 style="margin-bottom: 10px;">Module 1: Introduction to Python</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted); font-size: 15px; display: grid; gap: 8px;">
+                            <li>1.1 - What is Python & Why Learn It?</li>
+                            <li>1.2 - Setting Up Your Development Environment</li>
+                            <li>1.3 - Your First Python Program: "Hello, World!"</li>
+                            <li>1.4 - Understanding Variables and Data Types</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-bottom: 10px;">Module 2: Core Concepts</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted); font-size: 15px; display: grid; gap: 8px;">
+                            <li>2.1 - Working with Strings and Numbers</li>
+                            <li>2.2 - Control Flow: If, Elif, and Else Statements</li>
+                            <li>2.3 - Data Structures: Lists and Dictionaries</li>
+                            <li>2.4 - Loops: For and While</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3 style="margin-bottom: 10px;">Module 3: Functions & Beyond</h3>
+                        <ul style="list-style: none; padding: 0; margin: 0; color: var(--muted); font-size: 15px; display: grid; gap: 8px;">
+                            <li>3.1 - Defining and Calling Functions</li>
+                            <li>3.2 - Introduction to Object-Oriented Programming</li>
+                            <li>3.3 - Project: Building a Simple Calculator</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Community Forum - BitMentor{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 20px;">
+            <div>
+                <h1>Community Forum</h1>
+                <p class="lead">Collaborate, share projects, and solve problems together.</p>
+            </div>
+            <a href="{{ url_for('new_thread_page') }}" class="btn">Start a New Discussion</a>
+        </div>
+
+        <div class="thread-list">
+
+            {% for thread in threads %}
+            <a href="{{ url_for('thread_page', thread_id=thread.id) }}" class="thread-card">
+                <h3>{{ thread.title }}</h3>
+                <p class="thread-meta">Asked by {{ thread.author_name }} - {{ thread.timestamp.strftime('%d %b %Y') }}</p>
+                <div class="thread-footer">
+                    <span class="tag">Python</span>
+                    <span>View Discussion</span>
+                </div>
+            </a>
+            {% else %}
+                <div class="card">
+                    <p>No discussions have been started yet. Be the first!</p>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</main>
+{% endblock %}

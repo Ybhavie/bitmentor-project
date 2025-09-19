@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}{{ thread.title }}{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+        <span class="tag">Python</span>
+        <h1>{{ thread.title }}</h1>
+        
+        <div class="post-card original-post" style="margin-top: 20px;">
+            <div class="post-meta">
+                <strong>{{ thread.author_name }}</strong><span>posted on {{ thread.timestamp.strftime('%d %b %Y') }}</span>
+            </div>
+            <div class="post-body">
+                <p>{{ thread.content }}</p>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 30px;">Replies ({{ posts|length }})</h2>
+
+        {% for post in posts %}
+        <div class="post-card">
+            <div class="post-meta">
+                <strong>{{ post.author_name }}</strong><span>replied on {{ post.timestamp.strftime('%d %b %Y') }}</span>
+            </div>
+            <div class="post-body">
+                <p>{{ post.content }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="post-card" style="margin-top: 30px;">
+            <h3>Leave a Reply</h3>
+            <form class="reply-form" action="{{ url_for('post_reply', thread_id=thread_id) }}" method="post">
+                <textarea name="content" placeholder="Type your reply here..." required style="min-height: 120px; resize: vertical; width: 100%;" class="input"></textarea>
+                <button type="submit" class="btn" style="margin-top: 15px;">Post Reply</button>
+            </form>
+        </div>
+
+    </div>
+</main>
+{% endblock %}

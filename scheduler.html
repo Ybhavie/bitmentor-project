@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}AI Scheduler - BitMentor{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+        <h1>Your AI Learning Scheduler</h1>
+        <p class="lead">Let's create a personalized study plan to help you achieve your goals.</p>
+
+        <div class="scheduler-setup">
+            <form method="post">
+                <h2>Setup Your Plan</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="goal">What is your primary goal?</label>
+                        <select id="goal" name="goal" class="input">
+                            <option value="python">Learn Python for Beginners</option>
+                            <option value="java">Learn Java Fundamentals</option>
+                            <option value="job">Prepare for a tech interview</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hours">How many hours can you study per week?</label>
+                        <select id="hours" name="hours" class="input">
+                            <option value="3">Casual (2-3 hours)</option>
+                            <option value="7">Regular (5-7 hours)</option>
+                            <option value="10">Intensive (10+ hours)</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn" style="margin-top: 20px;">Generate My Plan</button>
+            </form>
+        </div>
+
+        {% if schedule %}
+        <div class="schedule-display">
+            <h2>This Week's Personalized Plan</h2>
+            
+            {% for task in schedule %}
+            <div class="day-plan">
+                <p>{{ task }}</p>
+            </div>
+            {% endfor %}
+            
+        </div>
+        {% endif %}
+
+    </div>
+</main>
+{% endblock %}

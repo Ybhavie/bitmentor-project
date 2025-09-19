@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ course.name }}{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+        
+        <div class="grid" style="grid-template-columns: 2fr 1fr; align-items: center; gap: 40px;">
+            <div>
+                <span class="tag">{{ course.badge }}</span>
+                <h1>{{ course.name }}</h1>
+                <p class="lead">{{ course.description }}</p>
+                <a href="#" class="btn" style="padding: 14px 24px;">Start Learning</a>
+            </div>
+            <div class="card feature">
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 12px;">
+                    <li><strong>Level:</strong> Beginner</li>
+                    <li><strong>Lessons:</strong> {{ lessons|length }}</li>
+                    <li><strong>Projects:</strong> 1</li>
+                    <li><strong>Certification:</strong> Included</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Course Curriculum</h2>
+            <div class="grid" style="gap: 12px;">
+                {% for lesson in lessons %}
+                <div class="card" style="padding: 12px 18px;">
+                   <p style="margin:0; font-weight: 600;">Module {{ lesson.module_num }} - Lesson {{ lesson.lesson_num }}: {{ lesson.title }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

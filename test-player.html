@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Python Test - BitMentor{% endblock %}
+
+{% block content %}
+<main class="section">
+    <div class="container">
+        <h1>Python Basics Test</h1>
+        <p class="lead">Select the best answer for each question.</p>
+
+        <form action="{{ url_for('submit_test', course_id=course_id) }}" method="post">
+            
+            {% for question in questions %}
+            <div class="card feature" style="margin-bottom: 20px;">
+                <h3 style="margin-bottom: 15px;">{{ loop.index }}. {{ question.question_text }}</h3>
+                
+                <div class="answers" style="display: grid; gap: 10px;">
+                    {% for answer in question.answers %}
+                    <label style="background: var(--bg); padding: 12px; border-radius: 8px; cursor: pointer;">
+                        <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}" required>
+                        {{ answer.answer_text }}
+                    </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn">Submit Test</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

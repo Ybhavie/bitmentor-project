@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BitMentor{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="{{ url_for('dashboard') }}" class="brand">
+                    <img src="{{ url_for('static', filename='favicon.png') }}" alt="BitMentor Logo">
+                    <span>BitMentor</span>
+                </a>
+                
+                {% if session.user_name %}
+                <ul class="desktop-menu">
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li><a href="{{ url_for('courses_page') }}">Courses</a></li>
+                    <li><a href="{{ url_for('scheduler_page') }}">Scheduler</a></li>
+                    <li><a href="{{ url_for('forum_page') }}">Forum</a></li>
+                    <li><a href="{{ url_for('mock_tests_page') }}">Tests</a></li>
+                    <li><a href="{{ url_for('profile_page') }}">Profile</a></li>
+                </ul>
+                {% endif %}
+
+                <button class="burger" id="burger-btn">☰</button>
+
+                <div class="mobile-menu" id="mobile-menu">
+                    <ul>
+                       <li>...</li>
+                    </ul>
+                </div>
+                
+                <div class="nav-buttons" style="display: flex; gap: 10px;">
+                    {% if session.user_name %}
+                        <a href="{{ url_for('logout') }}" class="btn ghost">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login_page') }}" class="btn ghost">Login</a>
+                        <a href="{{ url_for('signup_page') }}" class="btn">Sign Up</a>
+                    {% endif %}
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    {% block content %}{% endblock %}
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>
